@@ -76,17 +76,28 @@ When visualizing the predictions, it was evident that the model was generally su
 
 In the second part of the project, a YOLO v4 object detection model was used to detect faces in images. Combining this with the face mask classifier model allowed for accurate detection of people wearing face masks in a given image. However, some errors still existed, particularly in detecting all the faces when there were many people in the pictures. This limitation might have been due to the complexity of the scenes, occlusions, or overlapping faces, which made it challenging for the model to identify and distinguish each individual accurately.
 
-Fine-tunning and Optimizations:
+**Fine-tunning and Optimizations:**
+
 By refining the model and its parameters, performance can be improved to handle various situations and complexities more efficiently. Here are some strategies to consider for fine-tuning and optimization:
 
-Data Augmentation: Enhance the training dataset by applying data augmentation techniques in the ImageDataGenerator for training data. Adjust the parameters for rotation, flipping, scaling, and translation. This will help the model generalize better to different image conditions and variations.
+1. **Data Augmentation:** We could enhance the training dataset by applying data augmentation techniques in the ImageDataGenerator for training data. Adjusting the parameters for rotation, flipping, scaling, and translation, will help the model generalize better to different image conditions and variations.
 
-Increase Training Data: Gather more diverse training data, including images with multiple people, various face mask styles, and different backgrounds. This will improve the model's ability to handle complex images with multiple faces and different mask types.
+2. **Increase Training Data:** Gathering more diverse training data, including images with multiple people, various face mask styles, and different backgrounds, will improve the model's ability to handle complex images with multiple faces and different mask types.
 
-Optimize Model Architecture: Experiment with the architecture of the custom dense layers added to the MobileNetV2 base model. You can try adding more layers or changing the number of nodes in each layer, as well as exploring different activation functions and dropout rates to reduce overfitting.
+3. **Optimize Model Architecture:** We could experiment with the architecture of the custom dense layers added to the MobileNetV2 base model. Also, can try adding more layers or changing the number of nodes in each layer, as well as exploring different activation functions and dropout rates to reduce overfitting.
 
-Adjust Training Parameters: Fine-tune the training parameters such as the learning rate, batch size, and the number of epochs. This may help improve the convergence and generalization of the model during training.
+4. **Adjust Training Parameters:** Fine-tuning the training parameters such as the learning rate, batch size, and the number of epochs may help improve the convergence and generalization of the model during training.
 
-Improve YOLO v4 Performance: In the second part of the project, consider fine-tuning the YOLO v4 object detection model to better detect faces in images with multiple people. You can do this by adjusting the configuration file and training the model on a dataset that contains images with multiple faces, or by using a pre-trained model specifically optimized for detecting faces.
+5. **Improve YOLO v4 Performance:** In the second part of the project, consider fine-tuning the YOLO v4 object detection model to better detect faces in images with multiple people by adjusting the configuration file and training the model on a dataset that contains images with multiple faces, or by using a pre-trained model specifically optimized for detecting faces.
 
-Ensemble Models: Utilize an ensemble of different models or model architectures to improve the overall performance of the face mask detection system. This could help to reduce the impact of errors made by any single model.
+6. **Ensemble Models:** Utilizing an ensemble of different models or model architectures to improve the overall performance of the face mask detection system. This could help to reduce the impact of errors made by one single model.
+
+**Conclusion:**
+
+In summary, this project developed a deep learning-based face mask detection system to enforce mask-wearing rules and support public health safety. Using MobileNetV2, transfer learning, and data augmentation, the model achieved 90% test accuracy, demonstrating strong performance on unseen data. However, the system faced challenges detecting faces in images with multiple people. To enhance performance, strategies such as increasing training data diversity, modifying model architecture, and fine-tuning the YOLOv4 object detection model can be employed. These improvements will contribute to a more robust and accurate face mask detection system.
+
+**Citations:**
+
+1. Sandler, M., Howard, A., Zhu, M., Zhmoginov, A., & Chen, L.-C. (2018). MobileNetV2: Inverted Residuals and Linear Bottlenecks. In Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition (CVPR). Retrieved from https://openaccess.thecvf.com/content_cvpr_2018/html/Sandler_MobileNetV2_Inverted_Residuals_and_CVPR_2018_paper.html
+
+2. Bochkovskiy, A., Wang, C.-Y., & Liao, H.-Y. M. (2020). YOLOv4: Optimal Speed and Accuracy of Object Detection. arXiv preprint arXiv:2004.10934. Retrieved from https://arxiv.org/abs/2004.10934
