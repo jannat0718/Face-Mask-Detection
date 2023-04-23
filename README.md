@@ -51,3 +51,42 @@ YOLOv4 (You Only Look Once version 4) is a state-of-the-art real-time object det
 13. The previously loaded and compiled model was evaluated on the test dataset, achieving a test accuracy of 90% and a loss value of 0.6. To predict the class labels for the test images, the predict method of the model was used to obtain the probabilities, and binary class labels were determined based on a threshold of 0.5. The true and predicted labels were displayed for comparison. 
  
 14. A function called prediction_plot was defined to visualize the images along with their true and predicted class labels, and the predictions for the first 20 test images were plotted.
+
+**Second Part: Face Mask Detection**
+
+1. The saved classifier model for mask detection was loaded and the YOLOv4 object detection model was downloaded from GitHub along with its configuration file and weights.
+
+2. The downloaded configuration file and model weight are loaded using the OpenCV DNN module to identify faces in an image and then use the mask classifier model to determine whether the person is wearing a mask or not.
+
+3.  A test image was loaded and preprocessed to be compatible with YOLOv4, followed by a forward pass through the network to obtain the detections. The output was filtered based on a confidence threshold, and non-maximum suppression was applied to remove overlapping bounding boxes.
+
+4. The pre-trained mask classification model was then applied to the face regions within the bounding boxes. The face regions were extracted, resized, normalized, and prepared for input to the mask classifier.
+
+5. The mask classifier made predictions for each face, determining whether the individual was wearing a mask or not. Based on the predictions, bounding boxes and labels were drawn on the original image, with different colors representing the presence or absence of a mask. Finally, the annotated image was displayed, showing the face mask detection results.
+
+**Result and Analysis:**
+
+After training the face mask classifier model using MobileNetV2 as a base and adding custom dense layers, the model achieved a test accuracy of 90%. This meant that the model could correctly classify 90% of the test images into their respective classes (with mask and without mask). The test loss was 0.60, indicating good performance as lower loss values suggested better model predictions. Overall, these results showed that the model performed well on the test set and was able to generalize to unseen data.
+
+The predictions made on the test dataset, which contained 100 images downloaded from Bing, showed that the model could predict the presence or absence of face masks with reasonable accuracy. However, as the training data only contained single person with a face mask, the model struggled to classify images with more than one person. In such cases, the model couldn't accurately classify all individuals in the picture.
+
+Interestingly, the model could detect cartoon images with masks and worked well with meme images, demonstrating its versatility in handling different types of input images.
+
+When visualizing the predictions, it was evident that the model was generally successful in distinguishing between the two classes, though there were some cases where the predictions were incorrect. Some reasons for incorrect predictions could have been due to variations in image quality, lighting conditions, and occlusions.
+
+In the second part of the project, a YOLO v4 object detection model was used to detect faces in images. Combining this with the face mask classifier model allowed for accurate detection of people wearing face masks in a given image. However, some errors still existed, particularly in detecting all the faces when there were many people in the pictures. This limitation might have been due to the complexity of the scenes, occlusions, or overlapping faces, which made it challenging for the model to identify and distinguish each individual accurately.
+
+Fine-tunning and Optimizations:
+By refining the model and its parameters, performance can be improved to handle various situations and complexities more efficiently. Here are some strategies to consider for fine-tuning and optimization:
+
+Data Augmentation: Enhance the training dataset by applying data augmentation techniques in the ImageDataGenerator for training data. Adjust the parameters for rotation, flipping, scaling, and translation. This will help the model generalize better to different image conditions and variations.
+
+Increase Training Data: Gather more diverse training data, including images with multiple people, various face mask styles, and different backgrounds. This will improve the model's ability to handle complex images with multiple faces and different mask types.
+
+Optimize Model Architecture: Experiment with the architecture of the custom dense layers added to the MobileNetV2 base model. You can try adding more layers or changing the number of nodes in each layer, as well as exploring different activation functions and dropout rates to reduce overfitting.
+
+Adjust Training Parameters: Fine-tune the training parameters such as the learning rate, batch size, and the number of epochs. This may help improve the convergence and generalization of the model during training.
+
+Improve YOLO v4 Performance: In the second part of the project, consider fine-tuning the YOLO v4 object detection model to better detect faces in images with multiple people. You can do this by adjusting the configuration file and training the model on a dataset that contains images with multiple faces, or by using a pre-trained model specifically optimized for detecting faces.
+
+Ensemble Models: Utilize an ensemble of different models or model architectures to improve the overall performance of the face mask detection system. This could help to reduce the impact of errors made by any single model.
