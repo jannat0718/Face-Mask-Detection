@@ -1,4 +1,4 @@
-## Face Mask Detection Using Deep Learning
+## Face Mask Detection Using MobileNetV2 and YOLOv4
 
 **Introduction:**
 
@@ -10,9 +10,7 @@ The project's main objective is to develop a deep learning-based face mask detec
 
 **MobileNetV2:**
 
-MobileNetV2 is a lightweight and efficient deep learning model primarily designed for mobile and embedded vision applications. It is an improvement over the original MobileNet model, focusing on reducing computational complexity while maintaining high accuracy levels. MobileNetV2 uses depthwise separable convolutions, a technique that significantly reduces the number of parameters and computations required when compared to traditional convolutional layers.
-
-The key innovation in MobileNetV2 is the introduction of the inverted residual structure with linear bottlenecks. This architecture starts with a low-dimensional representation and expands it through a series of layers, followed by depthwise convolution and projection back to the lower-dimensional representation. This approach allows MobileNetV2 to retain more information through the network while minimizing computational costs. Furthermore, MobileNetV2 employs shortcut connections between bottlenecks, which aids in mitigating the vanishing gradient problem and improves overall performance.
+MobileNetV2 is a lightweight and efficient deep learning model primarily designed for mobile and embedded vision applications. It is an improvement over the original MobileNet model, focusing on reducing computational complexity while maintaining high accuracy levels. MobileNetV2 uses depthwise separable convolutions, a technique that significantly reduces the number of parameters and computations required when compared to traditional convolutional layers. The key innovation in MobileNetV2 is the introduction of the inverted residual structure with linear bottlenecks. This architecture starts with a low-dimensional representation and expands it through a series of layers, followed by depthwise convolution and projection back to the lower-dimensional representation. This approach allows MobileNetV2 to retain more information through the network while minimizing computational costs. Furthermore, MobileNetV2 employs shortcut connections between bottlenecks, which aids in mitigating the vanishing gradient problem and improves overall performance.
 
 MobileNetV2 is well-suited for various computer vision tasks, including image classification, object detection, and semantic segmentation, due to its high accuracy and low computational complexity. Its lightweight nature makes it an ideal choice for deploying on devices with limited resources, such as smartphones or edge devices.
 
@@ -68,11 +66,7 @@ YOLOv4 (You Only Look Once version 4) is a state-of-the-art real-time object det
 
 After training the face mask classifier model using MobileNetV2 as a base and adding custom dense layers, the model achieved a test accuracy of 90%. This meant that the model could correctly classify 90% of the test images into their respective classes (with mask and without mask). The test loss was 0.60, indicating good performance as lower loss values suggested better model predictions. Overall, these results showed that the model performed well on the test set and was able to generalize to unseen data.
 
-The predictions made on the test dataset, which contained 100 images downloaded from Bing, showed that the model could predict the presence or absence of face masks with reasonable accuracy. However, as the training data only contained single person with a face mask, the model struggled to classify images with more than one person. In such cases, the model couldn't accurately classify all individuals in the picture.
-
-Interestingly, the model could detect cartoon images with masks and worked well with meme images, demonstrating its versatility in handling different types of input images.
-
-When visualizing the predictions, it was evident that the model was generally successful in distinguishing between the two classes, though there were some cases where the predictions were incorrect. Some reasons for incorrect predictions could have been due to variations in image quality, lighting conditions, and occlusions.
+The predictions made on the test dataset, which contained 100 images downloaded from Bing, showed that the model could predict the presence or absence of face masks with reasonable accuracy. However, as the training data only contained single person with a face mask, the model struggled to classify images with more than one person. In such cases, the model couldn't accurately classify all individuals in the picture. Interestingly, the model could detect cartoon images with masks and worked well with meme images, demonstrating its versatility in handling different types of input images. When visualizing the predictions, it was evident that the model was generally successful in distinguishing between the two classes, though there were some cases where the predictions were incorrect. Some reasons for incorrect predictions could have been due to variations in image quality, lighting conditions, and occlusions.
 
 In the second part of the project, a YOLO v4 object detection model was used to detect faces in images. Combining this with the face mask classifier model allowed for accurate detection of people wearing face masks in a given image. However, some errors still existed, particularly in detecting all the faces when there were many people in the pictures. This limitation might have been due to the complexity of the scenes, occlusions, or overlapping faces, which made it challenging for the model to identify and distinguish each individual accurately.
 
